@@ -62,21 +62,30 @@ function render(md) {
   marked.setOptions({ gfm: true, breaks: false });
   el.innerHTML = marked.parse(md);
 
-  // h2에 id 부여 + 목차 생성
+  // 1) 번호 섹션에 앵커 id 부여 (h2 "1.", h3 "4-3.")
+  el.querySelectorAll('h2, h3').forEach(h => {
+    const m = h.textContent.match(/^(\d+(?:-\d+)?)\.\s/);
+    if (m) h.id = 'sec-' + m[1];
+  });
+
+  // 2) 본문의 "→ N번 / N·M번 / N-M번" 참조를 클릭 가능한 앵커로
+  el.innerHTML = el.innerHTML.replace(/→\s*(\d[\d·\-]*)번/g, (full, nums) =>
+    '→ ' + nums.split('·').map(p => `<a class="xref" href="#sec-${p}">${p}</a>`).join('·') + '번'
+  );
+
+  // 3) h2 기준 목차 생성
   const h2s = [...el.querySelectorAll('h2')];
-  h2s.forEach((h,i) => { h.id = h.id || ('s-' + i); });
+  h2s.forEach((h,i) => { if (!h.id) h.id = 's-' + i; });
   if (h2s.length > 2) {
     const toc = document.createElement('nav');
     toc.className = 'toc';
     toc.innerHTML = '<div class="toc-h">목차</div><ol>' +
       h2s.map(h => `<li><a href="#${h.id}">${h.textContent.replace(/^[0-9]+\.\s*/,'')}</a></li>`).join('') +
       '</ol>';
-    // 첫 h1(제목) 다음, 첫 안내 인용구 다음에 끼워넣기
-    const firstH2 = h2s[0];
-    firstH2.parentNode.insertBefore(toc, firstH2);
+    h2s[0].parentNode.insertBefore(toc, h2s[0]);
   }
 
-  // GFM 체크리스트 li 스타일 보정
+  // 4) GFM 체크리스트 li 스타일 보정
   el.querySelectorAll('li > input[type=checkbox]').forEach(c => {
     c.closest('li').classList.add('task');
   });

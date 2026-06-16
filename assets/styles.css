@@ -133,6 +133,11 @@ a:hover { text-decoration-thickness: 2px; }
   margin: 64px 0 18px; padding-top: 24px; border-top: var(--border);
 }
 .doc h3 { font-size: 19px; font-weight: 700; color: var(--ink); margin: 40px 0 12px; }
+/* 앵커 점프 시 상단 고정바에 안 가리게 */
+.doc h2, .doc h3 { scroll-margin-top: 78px; }
+/* 섹션 교차 참조 링크 (→ 4번) */
+.doc .xref { font-weight: 700; color: var(--p-1); text-decoration: none; border-bottom: 2px solid var(--p-3); padding: 0 1px; }
+.doc .xref:hover { background: var(--p-3); }
 .doc h4 { font-size: 16px; font-weight: 700; color: var(--body); margin: 30px 0 10px; }
 .doc p { margin: 0 0 18px; }
 .doc strong { color: var(--ink); font-weight: 700; }
