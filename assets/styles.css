@@ -1,0 +1,189 @@
+/* ============================================================
+   카카오임팩트 AX 가이드 사이트
+   kakao!mpact 디자인 시스템(슬라이드 덱)에서 색·타이포·외곽선·
+   칩 토큰을 차용하고, 타입스케일만 웹 문서 가독성에 맞게 재조정.
+   ============================================================ */
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+  /* ---- 표면 / 중립 ---- */
+  --paper:   #F5F2E9;
+  --paper-2: #FAF7F1;
+  --ink:     #000000;
+  --body:    #333333;
+  --muted:   #666666;
+  --line:    #CCCCCC;
+  --white:   #FFFFFF;
+
+  /* ---- 칩 팔레트 ---- */
+  --y-1: #FFF432;  --y-2: #FFCD00;  --y-3: #FFE38C;
+  --g-1: #52BE84;  --g-2: #BDEC5C;  --g-4: #C7F8D7;
+  --p-1: #5C37F4;  --p-3: #DCC8FF;  --p-4: #DAD4FB;
+  --pk-2:#FFA3A5;  --r-1: #F17770;
+  --b-1: #6496FF;  --b-2: #87B9FF;  --b-3: #E1F7FF;
+
+  /* ---- 시맨틱 ---- */
+  --accent: var(--y-1);
+  --font-kr:  "Pretendard Variable", Pretendard, "Noto Sans KR", -apple-system, sans-serif;
+  --font-num: "Inter", "Pretendard Variable", sans-serif;
+
+  /* ---- 외곽선 / 라운드 ---- */
+  --bw: 2.5px;
+  --border: var(--bw) solid var(--ink);
+  --radius-card: 20px;
+  --radius-sm: 14px;
+  --radius-pill: 999px;
+
+  --maxw: 880px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--body);
+  font-family: var(--font-kr);
+  font-size: 17px;
+  line-height: 1.75;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--p-1); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+
+/* ===== 상단 고정 바 ===== */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 24px;
+  background: var(--paper);
+  border-bottom: var(--border);
+}
+.topbar img { height: 26px; }
+.topbar .crumb { font-weight: 600; color: var(--ink); }
+.topbar .crumb a { color: var(--ink); text-decoration: none; }
+.topbar .spacer { flex: 1; }
+.topbar .tag {
+  font-family: var(--font-num); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 12px; border: var(--bw-2,2px) solid var(--ink);
+  border-radius: var(--radius-pill); background: var(--accent);
+}
+
+/* ===== 히어로 (허브) ===== */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.hero { padding: 64px 0 24px; }
+.hero .kicker {
+  font-family: var(--font-num); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: 44px; line-height: 1.15; letter-spacing: -0.035em;
+  font-weight: 800; color: var(--ink); margin: 0 0 16px;
+}
+.hero h1 .hl {
+  background: linear-gradient(transparent 55%, var(--accent) 55%);
+  padding: 0 4px;
+}
+.hero p { font-size: 18px; color: var(--body); margin: 0; max-width: 620px; }
+
+/* ===== 원칙 칩 줄 ===== */
+.principles { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 8px; }
+.principles .chip {
+  border: var(--border); border-radius: var(--radius-pill);
+  padding: 7px 16px; font-size: 14px; font-weight: 600; background: var(--white);
+}
+.principles .chip b { font-family: var(--font-num); margin-right: 6px; }
+.chip.c-y { background: var(--y-3); }
+.chip.c-g { background: var(--g-4); }
+.chip.c-b { background: var(--b-3); }
+
+/* ===== 가이드 카드 그리드 ===== */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 18px; padding: 28px 0 72px; }
+.card {
+  display: block; text-decoration: none; color: var(--ink);
+  border: var(--border); border-radius: var(--radius-card);
+  background: var(--white); padding: 22px 22px 20px;
+  transition: transform .12s ease;
+}
+.card:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--ink); }
+.card .badge {
+  display: inline-block; font-family: var(--font-num); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: var(--radius-pill); border: 2px solid var(--ink);
+  margin-bottom: 14px;
+}
+.card.soon { opacity: 0.55; }
+.card h3 { margin: 0 0 6px; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
+.card p { margin: 0; font-size: 14.5px; color: var(--muted); line-height: 1.6; }
+.card .arrow { margin-top: 14px; font-family: var(--font-num); font-weight: 700; }
+
+/* ===== 문서 뷰어 ===== */
+.doc { max-width: var(--maxw); margin: 0 auto; padding: 40px 24px 96px; }
+.doc h1 { font-size: 36px; line-height: 1.2; letter-spacing: -0.03em; font-weight: 800; color: var(--ink); margin: 8px 0 8px; }
+.doc h2 {
+  font-size: 25px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink);
+  margin: 52px 0 14px; padding-top: 18px; border-top: var(--border);
+}
+.doc h3 { font-size: 19px; font-weight: 700; color: var(--ink); margin: 30px 0 10px; }
+.doc h4 { font-size: 16px; font-weight: 700; color: var(--body); margin: 22px 0 8px; }
+.doc p { margin: 0 0 14px; }
+.doc strong { color: var(--ink); font-weight: 700; }
+.doc ul, .doc ol { padding-left: 22px; margin: 0 0 16px; }
+.doc li { margin-bottom: 7px; }
+.doc hr { border: none; border-top: 1px dashed var(--line); margin: 0; }
+
+/* 인용 = 노란 형광 콜아웃 카드 */
+.doc blockquote {
+  margin: 16px 0; padding: 16px 20px;
+  background: var(--y-3); border: var(--border); border-radius: var(--radius-sm);
+  color: var(--ink); font-style: normal;
+}
+.doc blockquote p { margin: 0 0 8px; }
+.doc blockquote p:last-child { margin: 0; }
+
+/* 코드 */
+.doc code {
+  font-family: var(--font-num), monospace; font-size: 0.86em;
+  background: var(--paper-2); border: 1px solid var(--line);
+  padding: 1px 6px; border-radius: 6px;
+}
+.doc pre {
+  background: var(--ink); color: #f5f5f5; padding: 16px 18px;
+  border-radius: var(--radius-sm); overflow-x: auto;
+}
+.doc pre code { background: none; border: none; color: inherit; padding: 0; }
+
+/* 표 = 외곽선 스티커 룩 */
+.doc table { border-collapse: separate; border-spacing: 0; width: 100%; margin: 16px 0; border: var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+.doc th { background: var(--ink); color: var(--paper); font-weight: 700; text-align: left; padding: 10px 14px; font-size: 14.5px; }
+.doc td { padding: 10px 14px; font-size: 14.5px; border-top: 1px solid var(--line); vertical-align: top; }
+.doc tr:nth-child(even) td { background: var(--paper-2); }
+
+/* 체크리스트 (- [ ]) */
+.doc input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--ink); margin-right: 6px; }
+.doc li.task { list-style: none; margin-left: -22px; }
+
+/* 목차 (문서 상단) */
+.toc { background: var(--white); border: var(--border); border-radius: var(--radius-card); padding: 18px 22px; margin: 24px 0 8px; }
+.toc .toc-h { font-family: var(--font-num); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 32px; }
+.toc li { margin-bottom: 5px; font-size: 14.5px; }
+.toc a { color: var(--ink); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+
+/* 푸터 */
+.foot { border-top: var(--border); padding: 28px 24px; text-align: center; color: var(--muted); font-size: 13px; }
+.foot .mark { height: 22px; vertical-align: middle; margin-right: 8px; opacity: 0.8; }
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 34px; }
+  .toc ol { columns: 1; }
+}
