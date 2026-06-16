@@ -49,7 +49,7 @@ body {
   color: var(--body);
   font-family: var(--font-kr);
   font-size: 17px;
-  line-height: 1.75;
+  line-height: 1.85;
   letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
 }
@@ -126,27 +126,27 @@ a:hover { text-decoration-thickness: 2px; }
 .card .arrow { margin-top: 14px; font-family: var(--font-num); font-weight: 700; }
 
 /* ===== 문서 뷰어 ===== */
-.doc { max-width: var(--maxw); margin: 0 auto; padding: 40px 24px 96px; }
-.doc h1 { font-size: 36px; line-height: 1.2; letter-spacing: -0.03em; font-weight: 800; color: var(--ink); margin: 8px 0 8px; }
+.doc { max-width: var(--maxw); margin: 0 auto; padding: 48px 24px 112px; line-height: 1.9; }
+.doc h1 { font-size: 37px; line-height: 1.25; letter-spacing: -0.03em; font-weight: 800; color: var(--ink); margin: 8px 0 12px; }
 .doc h2 {
   font-size: 25px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink);
-  margin: 52px 0 14px; padding-top: 18px; border-top: var(--border);
+  margin: 64px 0 18px; padding-top: 24px; border-top: var(--border);
 }
-.doc h3 { font-size: 19px; font-weight: 700; color: var(--ink); margin: 30px 0 10px; }
-.doc h4 { font-size: 16px; font-weight: 700; color: var(--body); margin: 22px 0 8px; }
-.doc p { margin: 0 0 14px; }
+.doc h3 { font-size: 19px; font-weight: 700; color: var(--ink); margin: 40px 0 12px; }
+.doc h4 { font-size: 16px; font-weight: 700; color: var(--body); margin: 30px 0 10px; }
+.doc p { margin: 0 0 18px; }
 .doc strong { color: var(--ink); font-weight: 700; }
-.doc ul, .doc ol { padding-left: 22px; margin: 0 0 16px; }
-.doc li { margin-bottom: 7px; }
-.doc hr { border: none; border-top: 1px dashed var(--line); margin: 0; }
+.doc ul, .doc ol { padding-left: 22px; margin: 0 0 22px; }
+.doc li { margin-bottom: 11px; }
+.doc hr { border: none; border-top: 1px dashed var(--line); margin: 8px 0; }
 
 /* 인용 = 노란 형광 콜아웃 카드 */
 .doc blockquote {
-  margin: 16px 0; padding: 16px 20px;
+  margin: 22px 0; padding: 20px 24px;
   background: var(--y-3); border: var(--border); border-radius: var(--radius-sm);
-  color: var(--ink); font-style: normal;
+  color: var(--ink); font-style: normal; line-height: 1.85;
 }
-.doc blockquote p { margin: 0 0 8px; }
+.doc blockquote p { margin: 0 0 12px; }
 .doc blockquote p:last-child { margin: 0; }
 
 /* 코드 */
@@ -163,8 +163,8 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* 표 = 외곽선 스티커 룩 */
 .doc table { border-collapse: separate; border-spacing: 0; width: 100%; margin: 16px 0; border: var(--border); border-radius: var(--radius-sm); overflow: hidden; }
-.doc th { background: var(--ink); color: var(--paper); font-weight: 700; text-align: left; padding: 10px 14px; font-size: 14.5px; }
-.doc td { padding: 10px 14px; font-size: 14.5px; border-top: 1px solid var(--line); vertical-align: top; }
+.doc th { background: var(--ink); color: var(--paper); font-weight: 700; text-align: left; padding: 12px 16px; font-size: 14.5px; }
+.doc td { padding: 12px 16px; font-size: 14.5px; line-height: 1.7; border-top: 1px solid var(--line); vertical-align: top; }
 .doc tr:nth-child(even) td { background: var(--paper-2); }
 
 /* 체크리스트 (- [ ]) */
