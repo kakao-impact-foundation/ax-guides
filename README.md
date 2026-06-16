@@ -47,4 +47,4 @@ python3 -m http.server 8000
 
 ---
 
-담당: 테일러 (테크임팩트팀) · 관련 운영 문서: `01.kakaoimpact-AX/_workspace/deploy-security/`
+관련 운영 문서: `01.kakaoimpact-AX/_workspace/deploy-security/`
