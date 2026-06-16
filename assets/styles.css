@@ -184,6 +184,20 @@ a:hover { text-decoration-thickness: 2px; }
 .toc a { color: var(--ink); text-decoration: none; }
 .toc a:hover { text-decoration: underline; }
 
+/* 맨 위로 플로팅 버튼 */
+.totop {
+  position: fixed; right: 24px; bottom: 24px; z-index: 60;
+  width: 48px; height: 48px; border-radius: var(--radius-pill);
+  border: var(--border); background: var(--accent); color: var(--ink);
+  font-family: var(--font-num); font-size: 22px; font-weight: 800; line-height: 1;
+  cursor: pointer; display: grid; place-items: center;
+  box-shadow: 3px 3px 0 var(--ink);
+  opacity: 0; pointer-events: none; transform: translateY(10px);
+  transition: opacity .18s ease, transform .18s ease, box-shadow .12s ease;
+}
+.totop.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.totop:hover { transform: translateY(-2px); box-shadow: 4px 5px 0 var(--ink); }
+
 /* 푸터 */
 .foot { border-top: var(--border); padding: 28px 24px; text-align: center; color: var(--muted); font-size: 13px; }
 .foot .mark { height: 22px; vertical-align: middle; margin-right: 8px; opacity: 0.8; }

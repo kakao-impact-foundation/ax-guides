@@ -27,6 +27,14 @@
   KAKAO IMPACT · AX · 내부 가이드 · 2026
 </footer>
 
+<button class="totop" id="totop" aria-label="맨 위로" title="맨 위로">↑</button>
+<script>
+// 맨 위로 플로팅 버튼
+const totop = document.getElementById('totop');
+addEventListener('scroll', () => totop.classList.toggle('show', scrollY > 400), { passive: true });
+totop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
 <script>
 // 허용된 문서만 (임의 경로 fetch 방지)
 const DOCS = {
