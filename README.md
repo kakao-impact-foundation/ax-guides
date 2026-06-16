@@ -43,7 +43,21 @@ python3 -m http.server 8000
 - 디자인 톤: `_design/kakaoimpact - theme (Template)` 의 색·타이포·외곽선 토큰 차용.
 - 가이드 내용에 내부 정보(계정 컨벤션·내부 링크 등)가 있어 **비공개 레포**로 운영합니다.
 - **GitHub Pages는 비영리 인증(GitHub for Nonprofits, Team 플랜) 승인 후** 비공개 레포 상태로 켭니다. (무료 플랜은 공개 레포만 Pages가 가능)
-- 승인 전 임시 공유가 필요하면 위 로컬 서버로 미리보거나, 별도 협의 후 결정합니다.
+- 검색 색인은 `robots.txt` + 각 페이지 `noindex` 메타로 차단해 둡니다. (Pages 사이트 자체는 공개 URL이므로)
+- 승인 전 임시 공유가 필요하면 위 로컬 서버로 미리봅니다.
+
+### 인증 승인 후 Pages 켜는 법 (1회)
+
+```bash
+# 1) main 브랜치 / 루트(/)에서 Pages 활성화
+gh api -X POST repos/kakao-impact-foundation/ax-guides/pages \
+  -f "source[branch]=main" -f "source[path]=/"
+
+# 2) 빌드 후 URL 확인 (1~2분 뒤)
+gh api repos/kakao-impact-foundation/ax-guides/pages --jq '.html_url'
+```
+
+또는 GitHub 웹에서 `Settings → Pages → Source: Deploy from a branch → main / (root)`.
 
 ---
 
