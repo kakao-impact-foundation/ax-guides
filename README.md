@@ -41,23 +41,23 @@ python3 -m http.server 8000
 ## 배포
 
 - 디자인 톤: `_design/kakaoimpact - theme (Template)` 의 색·타이포·외곽선 토큰 차용.
-- 가이드 내용에 내부 정보(계정 컨벤션·내부 링크 등)가 있어 **비공개 레포**로 운영합니다.
-- **GitHub Pages는 비영리 인증(GitHub for Nonprofits, Team 플랜) 승인 후** 비공개 레포 상태로 켭니다. (무료 플랜은 공개 레포만 Pages가 가능)
-- 검색 색인은 `robots.txt` + 각 페이지 `noindex` 메타로 차단해 둡니다. (Pages 사이트 자체는 공개 URL이므로)
-- 승인 전 임시 공유가 필요하면 위 로컬 서버로 미리봅니다.
+- **공개 레포 + GitHub Pages**로 운영합니다. 무료 플랜은 공개 레포만 Pages를 띄울 수 있어서요.
+- 가이드는 내부용 문서지만 키·개인정보 같은 민감 데이터는 없습니다. 다만 적극적으로 외부에 알릴 대상은 아니라 **검색 색인만 차단**해 둡니다.
+  - `robots.txt` 에 `Disallow: /`
+  - 각 페이지(`index.html`·`viewer.html`) `<head>` 에 `<meta name="robots" content="noindex, nofollow">`
+  - → 검색엔 안 잡히고 **URL을 아는 사람만** 봅니다 (공개 URL 기반의 "캐주얼 차단").
+- 더 가려야 할 내용이 생기면 **비공개 레포 + Vercel Pro**로 전환하세요. (판단 기준·방법은 `docs/github.md` 의 "외부 공개용 / 내부 공유용" 매트릭스 참조)
 
-### 인증 승인 후 Pages 켜는 법 (1회)
+### Pages (이미 활성화됨)
+
+`main` 브랜치 / 루트(`/`)에서 Pages가 켜져 있습니다 → `https://kakao-impact-foundation.github.io/ax-guides/`
+`docs/*.md` 를 고쳐 push 하면 1~2분 뒤 자동 반영됩니다. 설정 확인이 필요할 때만:
 
 ```bash
-# 1) main 브랜치 / 루트(/)에서 Pages 활성화
-gh api -X POST repos/kakao-impact-foundation/ax-guides/pages \
-  -f "source[branch]=main" -f "source[path]=/"
-
-# 2) 빌드 후 URL 확인 (1~2분 뒤)
 gh api repos/kakao-impact-foundation/ax-guides/pages --jq '.html_url'
 ```
 
-또는 GitHub 웹에서 `Settings → Pages → Source: Deploy from a branch → main / (root)`.
+또는 GitHub 웹에서 `Settings → Pages`.
 
 ---
 
